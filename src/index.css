@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+};
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #e60077;
+  --color-secondary: teal;
+}
+
+.banner-container {
+  height: 70vh;
+  width: 100%;
+}
+
+.banner-container .carousel .slide img {
+  max-height: 80vh;
+  
+}
