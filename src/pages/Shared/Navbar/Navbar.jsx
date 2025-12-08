@@ -24,7 +24,7 @@ const Navbar = () => {
       <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/" ><FcAbout /> About
+          to="/about" ><FcAbout /> About
         </NavLink>
         </li>
       <li><NavLink className={({ isActive }) =>
