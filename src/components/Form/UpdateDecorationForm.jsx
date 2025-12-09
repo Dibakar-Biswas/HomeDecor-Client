@@ -109,7 +109,7 @@ const UpdateDecorationForm = () => {
               type='submit'
               className='w-full cursor-pointer p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500 '
             >
-              Update Plant
+              Update Decoration
             </button>
           </div>
         </div>

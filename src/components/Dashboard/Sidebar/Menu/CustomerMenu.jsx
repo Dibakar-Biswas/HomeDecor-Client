@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BsFingerprint } from 'react-icons/bs';
-import MenuItem from './MenuItem';
 import { GrUserAdmin } from 'react-icons/gr';
 import BecomeDecoratorModal from '../../../Modal/BecomeDecoratorModal';
+import MenuItem from './MenuItem';
 
 const CustomerMenu = () => {
     const [isOpen, setIsOpen] = useState(false)

@@ -1,4 +1,4 @@
-import AddDecorationForm from '../../Form/AddDecorationForm'
+import AddDecorationForm from "../../../components/Form/AddDecorationForm";
 
 const AddDecoration = () => {
   return (
@@ -6,7 +6,7 @@ const AddDecoration = () => {
       {/* Form */}
       <AddDecorationForm></AddDecorationForm>
     </div>
-  )
-}
+  );
+};
 
-export default AddDecoration
+export default AddDecoration;

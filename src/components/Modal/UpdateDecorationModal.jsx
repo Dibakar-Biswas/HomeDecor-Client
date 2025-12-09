@@ -1,4 +1,6 @@
+import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import React from 'react';
+import UpdateDecorationForm from '../Form/UpdateDecorationForm';
 
 const UpdateDecorationModal = ({ setIsEditModalOpen, isOpen }) => {
     return (
@@ -29,7 +31,7 @@ const UpdateDecorationModal = ({ setIsEditModalOpen, isOpen }) => {
               Update Plant Info
             </DialogTitle>
             <div className='mt-2 w-full'>
-              <UpdatePlantForm />
+              <UpdateDecorationForm></UpdateDecorationForm>
             </div>
           </DialogPanel>
         </div>

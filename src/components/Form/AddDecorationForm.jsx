@@ -16,7 +16,7 @@ const AddDecorationForm = () => {
                 name='name'
                 id='name'
                 type='text'
-                placeholder='Plant Name'
+                placeholder='Service Name'
                 required
               />
             </div>
@@ -30,10 +30,11 @@ const AddDecorationForm = () => {
                 className='w-full px-4 py-3 border-lime-300 focus:outline-lime-500 rounded-md bg-white'
                 name='category'
               >
-                <option value='Indoor'>Indoor</option>
-                <option value='Outdoor'>Outdoor</option>
-                <option value='Succulent'>Succulent</option>
-                <option value='Flowering'>Flowering</option>
+                <option value='Indoor'>Home</option>
+                <option value='Outdoor'>Wedding</option>
+                <option value='Succulent'>Office</option>
+                <option value='Flowering'>Seminar</option>
+                <option value='Flowering'>Meeting</option>
               </select>
             </div>
             {/* Description */}
@@ -44,41 +45,41 @@ const AddDecorationForm = () => {
 
               <textarea
                 id='description'
-                placeholder='Write plant description here...'
+                placeholder='Write decoration description here...'
                 className='block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800  border border-lime-300 bg-white focus:outline-lime-500 '
                 name='description'
               ></textarea>
             </div>
           </div>
           <div className='space-y-6 flex flex-col'>
-            {/* Price & Quantity */}
+            {/* Cost & Unit */}
             <div className='flex justify-between gap-2'>
-              {/* Price */}
+              {/* Cost */}
               <div className='space-y-1 text-sm'>
                 <label htmlFor='price' className='block text-gray-600 '>
-                  Price
+                  Cost
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
                   name='price'
                   id='price'
                   type='number'
-                  placeholder='Price per unit'
+                  placeholder='Cost per Service'
                   required
                 />
               </div>
 
-              {/* Quantity */}
+              {/* Unit */}
               <div className='space-y-1 text-sm'>
                 <label htmlFor='quantity' className='block text-gray-600'>
-                  Quantity
+                  Unit
                 </label>
                 <input
                   className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
                   name='quantity'
                   id='quantity'
                   type='number'
-                  placeholder='Available quantity'
+                  placeholder='Available unit'
                   required
                 />
               </div>

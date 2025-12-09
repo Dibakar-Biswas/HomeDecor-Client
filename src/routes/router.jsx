@@ -10,35 +10,55 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
 import PrivateRoute from "./PrivateRoute";
-import Decorator from "../pages/Decorator/Decorator";
+import Decorator from "../pages/Service/Service";
 import DecorationItem from "../pages/DecorationItem/DecorationItem";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Statistics from "../components/Dashboard/Statistics/Statistics";
-import AddDecoration from "../components/Dashboard/Admin/AddDecoration";
-import MyInventory from "../components/Dashboard/Admin/MyInventory";
-import ManageUsers from "../components/Dashboard/Admin/ManageUsers";
-import MyOrders from "../components/Dashboard/Customer/MyOrders";
-import ManageOrders from "../components/Dashboard/Decorator/ManageOrders";
+import AddDecoration from "../pages/Dashboard/Admin/AddDecoration";
+import MyInventory from "../pages/Dashboard/Admin/MyInventory";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import MyOrders from "../pages/Dashboard/Customer/MyOrders";
+import ManageOrders from "../pages/Dashboard/Decorator/ManageOrders";
+import Service from "../pages/Service/Service";
+import DecorationDetails from "../pages/DecorationDetails/DecorationDetails";
+
+
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
     children: [
-        {
-            index: true,
-            Component: Home,
-            loader: () => fetch('/serviceCenters.json').then(res => res.json())
-        },
-        {
-          path: 'decorator',
-          element: <PrivateRoute><Decorator></Decorator></PrivateRoute>
-        },
-        {
-          path: 'decoration-item',
-          element: <PrivateRoute><DecorationItem></DecorationItem></PrivateRoute>
-        },
-        {
+      {
+        index: true,
+        Component: Home,
+        loader: () => fetch("/serviceCenters.json").then((res) => res.json()),
+      },
+      {
+        path: 'decoration/:id',
+        element: <DecorationDetails></DecorationDetails>
+      },
+      {
+        path: '/service',
+        element: <Service></Service>
+      },
+      // {
+      //   path: "decorator",
+      //   element: (
+      //     <PrivateRoute>
+      //       <Decorator></Decorator>
+      //     </PrivateRoute>
+      //   ),
+      // },
+      // {
+      //   path: "decoration-item",
+      //   element: (
+      //     <PrivateRoute>
+      //       <DecorationItem></DecorationItem>
+      //     </PrivateRoute>
+      //   ),
+      // },
+      {
         path: "/about",
         Component: About,
         children: [
@@ -60,25 +80,29 @@ export const router = createBrowserRouter([
           },
         ],
       },
-    ]
+    ],
   },
   {
-    path: '/',
+    path: "/",
     Component: AuthLayout,
     children: [
       {
-        path: 'login',
+        path: "login",
         Component: Login,
       },
       {
-        path: 'register',
+        path: "register",
         Component: Register,
-      }
-    ]
+      },
+    ],
   },
   {
-    path: '/dashboard',
-    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
@@ -89,7 +113,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'add-plant',
+        path: "add-decoration",
         element: (
           <PrivateRoute>
             <AddDecoration></AddDecoration>
@@ -97,7 +121,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'my-inventory',
+        path: "my-inventory",
         element: (
           <PrivateRoute>
             <MyInventory></MyInventory>
@@ -105,7 +129,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'manage-users',
+        path: "manage-users",
         element: (
           <PrivateRoute>
             <ManageUsers></ManageUsers>
@@ -121,7 +145,7 @@ export const router = createBrowserRouter([
       //   ),
       // },
       {
-        path: 'my-orders',
+        path: "my-orders",
         element: (
           <PrivateRoute>
             <MyOrders></MyOrders>
@@ -129,9 +153,9 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'manage-orders',
+        path: "manage-orders",
         element: <ManageOrders></ManageOrders>,
       },
     ],
-  }
+  },
 ]);

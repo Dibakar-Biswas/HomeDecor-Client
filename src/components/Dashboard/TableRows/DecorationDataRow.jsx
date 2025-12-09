@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import DeleteModal from '../../Modal/DeleteModal';
 import UpdateDecorationModal from '../../Modal/UpdateDecorationModal';
+// import DeleteModal from '../../Modal/DeleteModal';
+// import UpdateDecorationModal from '../../Modal/UpdateDecorationModal';
 
 const DecorationDataRow = () => {
     let [isOpen, setIsOpen] = useState(false)
