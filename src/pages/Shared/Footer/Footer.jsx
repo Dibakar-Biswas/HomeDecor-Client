@@ -1,11 +1,12 @@
 import React from "react";
 import Logo from "../../../components/Logo/Logo";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
     <footer className="footer footer-horizontal footer-center  p-10">
       <aside>
-        <Logo></Logo>
+        <Link to='/'><Logo></Logo></Link>
         <p className="font-bold">
           ACME Industries Ltd.
           <br />

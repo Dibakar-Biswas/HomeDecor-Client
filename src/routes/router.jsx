@@ -9,6 +9,10 @@ import Team from "../pages/About/Team";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import Decorator from "../pages/Decorator/Decorator";
+import DecorationItem from "../pages/DecorationItem/DecorationItem";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +23,14 @@ export const router = createBrowserRouter([
             index: true,
             Component: Home,
             loader: () => fetch('/serviceCenters.json').then(res => res.json())
+        },
+        {
+          path: 'decorator',
+          element: <PrivateRoute><Decorator></Decorator></PrivateRoute>
+        },
+        {
+          path: 'decoration-item',
+          element: <PrivateRoute><DecorationItem></DecorationItem></PrivateRoute>
         },
         {
         path: "/about",
@@ -60,6 +72,60 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    children: [
+      {
+        index: true,
+        element: (
+          <PrivateRoute>
+            <Statistics />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'add-plant',
+        element: (
+          <PrivateRoute>
+            <AddPlant />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'my-inventory',
+        element: (
+          <PrivateRoute>
+            <MyInventory />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'manage-users',
+        element: (
+          <PrivateRoute>
+            <ManageUsers />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'profile',
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'my-orders',
+        element: (
+          <PrivateRoute>
+            <MyOrders />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'manage-orders',
+        element: <ManageOrders />,
+      },
+    ],
   }
 ]);
