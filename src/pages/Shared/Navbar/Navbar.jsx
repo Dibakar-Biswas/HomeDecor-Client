@@ -1,44 +1,56 @@
 import React from "react";
 import Logo from "../../../components/Logo/Logo";
 import { FaHome } from "react-icons/fa";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { MdDashboardCustomize, MdDesignServices } from "react-icons/md";
 import { FcAbout } from "react-icons/fc";
 import { IoIosContacts } from "react-icons/io";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+
+  const {user, logOut} = useAuth();
+
+  const handleLogOut = () => {
+    logOut()
+    .then()
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
     const links = (
     <>
       <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/" ><FaHome></FaHome> Home
+          to="/" ><FaHome></FaHome>Home
         </NavLink>
         </li>
       <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/" ><MdDesignServices /> Service
+          to="/" ><MdDesignServices />Service
         </NavLink>
         </li>
       <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/about" ><FcAbout /> About
+          to="/about" ><FcAbout />About
         </NavLink>
         </li>
       <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/" ><IoIosContacts /> Contact
+          to="/" ><IoIosContacts />Contact
         </NavLink>
         </li>
-      <li><NavLink className={({ isActive }) =>
+      {user && <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/" ><MdDashboardCustomize /> Dashboard
+          to="/dashboard" ><MdDashboardCustomize />Dashboard
         </NavLink>
-        </li>
+        </li>}
       
     </>
   );
@@ -80,7 +92,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        {
+          user ? <a onClick={handleLogOut} className="btn">Log Out</a>
+          : <Link className="btn" to='/login'>Login</Link>
+        }
       </div>
     </div>
   );
