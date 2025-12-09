@@ -21,6 +21,7 @@ import MyOrders from "../pages/Dashboard/Customer/MyOrders";
 import ManageOrders from "../pages/Dashboard/Decorator/ManageOrders";
 import Service from "../pages/Service/Service";
 import DecorationDetails from "../pages/DecorationDetails/DecorationDetails";
+import Profile from "../pages/Profile/Profile";
 
 
 
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: '/service',
         element: <Service></Service>
+      },
+      {
+        path: 'profile',
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       },
       // {
       //   path: "decorator",
