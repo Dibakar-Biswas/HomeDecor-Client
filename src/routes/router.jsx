@@ -15,6 +15,9 @@ import Service from "../pages/Service/Service";
 import Profile from "../pages/Profile/Profile";
 import CreateDecoration from "../pages/CreateDecoration/CreateDecoration";
 import MyDecorations from "../pages/Dashboard/MyDecorations/MyDecorations";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
+import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 
 
 
@@ -90,6 +93,18 @@ export const router = createBrowserRouter([
       {
         path:'create-decoration',
         Component: CreateDecoration
+      },
+      {
+        path: 'payment/:decorationId',
+        Component: Payment
+      },
+      {
+        path: 'payment-success',
+        Component: PaymentSuccess
+      },
+      {
+        path: 'payment-cancelled',
+        Component: PaymentCancelled
       }
     ]
   },

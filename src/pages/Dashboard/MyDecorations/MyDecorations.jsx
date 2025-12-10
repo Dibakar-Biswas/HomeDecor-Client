@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { PiMagnifyingGlassDuotone } from "react-icons/pi";
 import Swal from "sweetalert2";
+import { Link } from "react-router";
 
 const MyDecorations = () => {
   const { user } = useAuth();
@@ -48,16 +49,17 @@ const MyDecorations = () => {
 
   return (
     <div>
-      <h2 className="text-2xl">All of my decorations: {decorations.length}</h2>
+      <h2 className="text-2xl">All Decorations: {decorations.length}</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>Sl. No</th>
               <th>Service Name</th>
               <th>Cost</th>
-              <th>Payment Status</th>
+              <th>Payment</th>
+              <th>Decoration Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -67,7 +69,16 @@ const MyDecorations = () => {
                 <th>{index + 1}</th>
                 <td>{decoration.serviceName}</td>
                 <td>{decoration.cost}</td>
-                <td>Blue</td>
+                <td>
+                    {/* {
+                        decoration.paymentStatus === 'paid' ?
+                        <span className="text-pink-600">Paid</span>
+                        :
+                        <Link to={`/dashboard/payment/${decoration._id}`} className="btn btn-primary btn-sm">Pay</Link>
+                    } */}
+                    <Link to={`/dashboard/payment/${decoration._id}`} className="btn btn-primary btn-sm">View</Link>
+                </td>
+                <td>{decoration.decorationStatus}</td>
                 <td>
                   <button className="btn btn-square hover:bg-primary">
                     <PiMagnifyingGlassDuotone></PiMagnifyingGlassDuotone>
