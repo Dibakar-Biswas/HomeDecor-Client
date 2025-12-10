@@ -3,7 +3,6 @@ import Banner from "../Banner/Banner";
 import Brands from "../Brands/Brands";
 import Reviews from "../Reviews/Reviews";
 import Coverage from "../../Coverage/Coverage";
-import Decoration from "../Decoration/Decoration";
 
 const reviewsPromise = fetch('/reviews.json').then(res => res.json())
 
@@ -12,7 +11,6 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Brands></Brands>
-      <Decoration></Decoration>
       <Coverage></Coverage>
       <Reviews reviewsPromise={reviewsPromise}></Reviews>
     </div>

@@ -46,12 +46,13 @@ const Navbar = () => {
           to="/" ><IoIosContacts />Contact
         </NavLink>
         </li>
-      {/* <li><NavLink className={({ isActive }) =>
+      
+        {/* {user && <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/decoration-item" ><IoIosContacts />Decoration Item
+          to="/dashboard/my-decorations" ><IoIosContacts />My Decoration
         </NavLink>
-        </li> */}
+        </li>} */}
       {/* <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
