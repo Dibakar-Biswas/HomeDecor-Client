@@ -1,10 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { Link, useSearchParams } from 'react-router';
 import successImg from '../../../../public/success.png'
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const PaymentSuccess = () => {
+    const [searchParams] = useSearchParams();
+    const [paymentInfo, setPaymentInfo] = useState({});
+    const sessionId = searchParams.get('session_id');
+    const axiosSecure = useAxiosSecure();
+
+    console.log(sessionId);
+    
+    useEffect(() => {
+        if(sessionId){
+            axiosSecure.patch(`/payment-success?session_id=${sessionId}`)
+            .then(res => {
+                console.log(res.data);
+                setPaymentInfo({
+                    transactionId: res.data.transactionId,
+                    trackingId: res.data.trackingId
+                })
+            })
+        }
+    },[sessionId, axiosSecure])
+
     return (
         <div className='flex flex-col justify-center items-center bg-cyan-200 rounded-2xl p-4'>
+            <p>Your TransactionId: {paymentInfo.transactionId}</p>
+            <p>Your Decoration TrackingId: {paymentInfo.trackingId}</p>
             <div className="mb-4 mt-2 ">
                 <img className='rounded-2xl' src={successImg} alt="" />
             </div>

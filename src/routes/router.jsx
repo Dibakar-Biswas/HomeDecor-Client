@@ -18,6 +18,7 @@ import MyDecorations from "../pages/Dashboard/MyDecorations/MyDecorations";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
+import ServiceDetails from "../pages/Service/ServiceDetails";
 
 
 
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: '/service',
         element: <Service></Service>
+      },
+      {
+        path: '/service/:id',
+        element: <ServiceDetails></ServiceDetails>
       },
       {
         path: 'profile',

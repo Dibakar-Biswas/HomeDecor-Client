@@ -31,16 +31,19 @@ const Payment = () => {
   //   };
 
   const handlePayment = async(decoration) => {
+  
     const paymentInfo = {
       cost: decoration.cost,
       decorationId: decoration._id,
       adminEmail: decoration.adminEmail,
       serviceName: decoration.serviceName,
+    //   customerEmail: user.email
     }
 
     const res = await axiosSecure.post('/payment-checkout-session', paymentInfo)
     window.location.assign(res.data.url);
     // console.log(res.data.url);
+   
   };
 
   if (isLoading) return <Loading></Loading>;

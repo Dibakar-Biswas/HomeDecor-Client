@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router";
 
 const CreateDecoration = () => {
   const {
@@ -10,6 +11,7 @@ const CreateDecoration = () => {
     handleSubmit,
     // formState: { errors },
   } = useForm();
+  const navigate = useNavigate()
 
   const axiosSecure = useAxiosSecure();
 
@@ -30,7 +32,10 @@ const CreateDecoration = () => {
         // save the decoration info to the database
         axiosSecure.post('/decorations', data)
         .then(res => {
-            console.log('after saving parcel', res.data);
+            console.log('after creating decoration', res.data);
+            if(res.data.insertedId){
+                navigate('/dashboard/my-decorations')
+            }
         })
         // console.log("Form Submitted:", data);
 
