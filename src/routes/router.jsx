@@ -19,6 +19,9 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import ServiceDetails from "../pages/Service/ServiceDetails";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import Decorator from "../pages/Decorator/Decorator";
+import ApproveDecorator from "../pages/Dashboard/ApproveDecorator/ApproveDecorator";
 
 
 
@@ -104,12 +107,29 @@ export const router = createBrowserRouter([
         Component: Payment
       },
       {
+        path: 'payment-history',
+        Component: PaymentHistory
+      },
+      {
+        path: 'become-decorator',
+        Component: Decorator
+      },
+      {
+        path: 'approve-decorator',
+        Component: ApproveDecorator
+      },
+      {
         path: 'payment-success',
         Component: PaymentSuccess
       },
       {
         path: 'payment-cancelled',
         Component: PaymentCancelled
+      
+      },
+      {
+        path: 'profile',
+        Component: Profile
       }
     ]
   },

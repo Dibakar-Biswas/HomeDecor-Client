@@ -2,6 +2,11 @@ import React from "react";
 import { IoIosContacts } from "react-icons/io";
 import { BsGearWideConnected } from "react-icons/bs";
 import { Link, NavLink, Outlet } from "react-router";
+import { FaRegCreditCard } from "react-icons/fa";
+import { MdManageAccounts } from "react-icons/md";
+import { SiNginxproxymanager } from "react-icons/si";
+import { FcManager } from "react-icons/fc";
+
 
 const DashboardLayout = () => {
   return (
@@ -49,7 +54,7 @@ const DashboardLayout = () => {
             {/* List item */}
             <li>
               <Link
-                to='/'
+                to="/"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Homepage"
               >
@@ -72,23 +77,133 @@ const DashboardLayout = () => {
             </li>
 
             {/* Our dashboard link */}
+            
+            {/* My Decorations */}
             <li>
-              <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="MyDecorations" to="/dashboard/my-decorations">
-                  <BsGearWideConnected />
-                  <span className="is-drawer-close:hidden">My Decorations</span></NavLink>
+              <NavLink
+                to="/dashboard/my-decorations"
+                className={({ isActive }) =>
+                  `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white" 
+                      : "text-gray-600 hover:bg-gray-100" 
+                  }`
+                }
+                data-tip="My Decorations"
+              >
+                <BsGearWideConnected className="text-xl" />
+                <span className="is-drawer-close:hidden">
+                  My Decorations
+                </span>
+              </NavLink>
             </li>
-            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" to="/dashboard/create-decoration" ><IoIosContacts /><span className="is-drawer-close:hidden">Create-Decoration</span>
-        </NavLink>
-        </li>
+
+            {/* Payment History */}
+            <li>
+              <NavLink
+                to="/dashboard/payment-history"
+                className={({ isActive }) =>
+                  `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white" 
+                      : "text-gray-600 hover:bg-gray-100" 
+                  }`
+                }
+                data-tip="Payment History"
+              >
+                <FaRegCreditCard className="text-xl" />
+                <span className="is-drawer-close:hidden">
+                  Payment History
+                </span>
+              </NavLink>
+            </li>
+
+            
+            {/* Become a Decorator */}
+            <li>
+              <NavLink
+                to="/dashboard/become-decorator"
+                className={({ isActive }) =>
+                  `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white" 
+                      : "text-gray-600 hover:bg-gray-100" 
+                  }`
+                }
+                data-tip="Become a Decorator"
+              >
+                <MdManageAccounts className="text-xl" />
+                <span className="is-drawer-close:hidden">
+                  Become a Decorator
+                </span>
+              </NavLink>
+            </li>
+
+            {/* Approve  Decorator */}
+            <li>
+              <NavLink
+                to="/dashboard/approve-decorator"
+                className={({ isActive }) =>
+                  `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white" 
+                      : "text-gray-600 hover:bg-gray-100" 
+                  }`
+                }
+                data-tip="Approve Decorator"
+              >
+                <SiNginxproxymanager className="text-xl" />
+                <span className="is-drawer-close:hidden">
+                  Approve Decorator
+                </span>
+              </NavLink>
+            </li>
+
+            {/* Create Decoration */}
+            <li>
+              <NavLink
+                to="/dashboard/create-decoration"
+                className={({ isActive }) =>
+                  `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white" 
+                      : "text-gray-600 hover:bg-gray-100" 
+                  }`
+                }
+                data-tip="Create Decoration"
+              >
+                <IoIosContacts  className="text-xl" />
+                <span className="is-drawer-close:hidden">
+                  Create Decoration
+                </span>
+              </NavLink>
+            </li>
+            
+            <li>
+              <NavLink
+                to="/dashboard/profile"
+                className={({ isActive }) =>
+                  `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white" 
+                      : "text-gray-600 hover:bg-gray-100" 
+                  }`
+                }
+                data-tip="Profile"
+              >
+                <FcManager className="text-xl" />
+                <span className="is-drawer-close:hidden">
+                  Profile
+                </span>
+              </NavLink>
+            </li>
 
             {/* List item */}
-            <li>
+            {/* <li>
               <button
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="BsGearWideConnected "
               >
-                {/* Settings icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -106,7 +221,7 @@ const DashboardLayout = () => {
                 </svg>
                 <span className="is-drawer-close:hidden">Settings</span>
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
