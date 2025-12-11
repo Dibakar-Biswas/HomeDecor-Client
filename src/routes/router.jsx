@@ -22,6 +22,7 @@ import ServiceDetails from "../pages/Service/ServiceDetails";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import Decorator from "../pages/Decorator/Decorator";
 import ApproveDecorator from "../pages/Dashboard/ApproveDecorator/ApproveDecorator";
+import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
 
 
 
@@ -126,6 +127,10 @@ export const router = createBrowserRouter([
         path: 'payment-cancelled',
         Component: PaymentCancelled
       
+      },
+      {
+        path: 'users-management',
+        Component: UsersManagement      
       },
       {
         path: 'profile',
