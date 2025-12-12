@@ -84,6 +84,7 @@ const ApproveDecorator = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Status</th>
+              <th>Work Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -105,10 +106,11 @@ const ApproveDecorator = () => {
                       }`}
                     >
                       {decorator.status}
-                      {/* {typeof decorator.status === 'object' ? decorator.status.status : decorator.status} */}
+                      
                     </p>
                   }
                 </td>
+                <td>{decorator.workStatus}</td>
                 <td>
                   <button
                     onClick={() => handleApproval(decorator)}
