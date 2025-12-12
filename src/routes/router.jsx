@@ -23,6 +23,8 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import Decorator from "../pages/Decorator/Decorator";
 import ApproveDecorator from "../pages/Dashboard/ApproveDecorator/ApproveDecorator";
 import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
+import AdminRoute from "./AdminRoute";
+import AssignDecorator from "../pages/Dashboard/AssignDecorator/AssignDecorator";
 
 
 
@@ -97,11 +99,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'my-decorations',
-        Component: MyDecorations
+        element: <AdminRoute><MyDecorations></MyDecorations></AdminRoute>
       },
       {
         path:'create-decoration',
-        Component: CreateDecoration
+        element: <AdminRoute><CreateDecoration></CreateDecoration></AdminRoute>
       },
       {
         path: 'payment/:decorationId',
@@ -117,7 +119,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'approve-decorator',
-        Component: ApproveDecorator
+        element: <AdminRoute><ApproveDecorator></ApproveDecorator></AdminRoute>
+      },
+      {
+        path: 'assign-decorator',
+        element: <AdminRoute><AssignDecorator></AssignDecorator></AdminRoute>
       },
       {
         path: 'payment-success',
@@ -130,7 +136,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'users-management',
-        Component: UsersManagement      
+        element: <AdminRoute><UsersManagement></UsersManagement></AdminRoute>      
       },
       {
         path: 'profile',

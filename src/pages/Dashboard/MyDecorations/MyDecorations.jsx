@@ -59,6 +59,7 @@ const MyDecorations = () => {
               <th>Service Name</th>
               <th>Cost</th>
               <th>Payment</th>
+              <th>Tracking Id</th>
               <th>Decoration Status</th>
               <th>Actions</th>
             </tr>
@@ -78,6 +79,7 @@ const MyDecorations = () => {
                     } */}
                     <Link to={`/dashboard/payment/${decoration._id}`} className="btn btn-primary btn-sm">View</Link>
                 </td>
+                <td>{decoration.trackingId}</td>
                 <td>{decoration.decorationStatus}</td>
                 <td>
                   <button className="btn btn-square hover:bg-primary">

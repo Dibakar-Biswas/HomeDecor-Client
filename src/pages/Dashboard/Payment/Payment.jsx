@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../components/Loading/Loading";
+import useAuth from "../../../hooks/useAuth";
 
 const Payment = () => {
   const { decorationId } = useParams();
   const axiosSecure = useAxiosSecure();
+    const {user} = useAuth();
 
   const { isLoading, data: decoration } = useQuery({
     queryKey: ["decorations", decorationId],
@@ -31,13 +33,17 @@ const Payment = () => {
   //   };
 
   const handlePayment = async(decoration) => {
+    if (!user || !user.email) {
+        alert("Please log in to pay");
+        return;
+    }
   
     const paymentInfo = {
       cost: decoration.cost,
       decorationId: decoration._id,
       adminEmail: decoration.adminEmail,
       serviceName: decoration.serviceName,
-    //   customerEmail: user.email
+      customerEmail: user.email
     }
 
     const res = await axiosSecure.post('/payment-checkout-session', paymentInfo)
@@ -58,7 +64,7 @@ const Payment = () => {
       ) : (
         <button
           onClick={() => handlePayment(decoration)}
-          // onClick={handlePayment}
+        //   onClick={handlePayment}
           className="btn btn-primary btn-sm"
         >
           Pay

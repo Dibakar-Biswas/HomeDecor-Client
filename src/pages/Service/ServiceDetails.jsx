@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Loading from '../../components/Loading/Loading'; // Assuming you have this
+import Loading from '../../components/Loading/Loading'; 
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -50,7 +50,7 @@ const ServiceDetails = () => {
           <div className="card-actions justify-end mt-6">
             {isPaid ? (
               <span className="text-2xl font-bold text-green-600 border border-green-600 px-4 py-2 rounded">
-                Already Paid
+                Already Booked
               </span>
             ) : (
               <button 

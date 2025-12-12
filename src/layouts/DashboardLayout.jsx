@@ -3,7 +3,7 @@ import { IoIosContacts } from "react-icons/io";
 import { BsGearWideConnected } from "react-icons/bs";
 import { Link, NavLink, Outlet } from "react-router";
 import { FaRegCreditCard, FaUser } from "react-icons/fa";
-import { MdManageAccounts } from "react-icons/md";
+import { MdManageAccounts, MdOutlineManageAccounts } from "react-icons/md";
 import { SiNginxproxymanager } from "react-icons/si";
 import { FcManager } from "react-icons/fc";
 import useRole from "../hooks/useRole";
@@ -155,6 +155,26 @@ const DashboardLayout = () => {
                     <SiNginxproxymanager className="text-xl" />
                     <span className="is-drawer-close:hidden">
                       Approve Decorator
+                    </span>
+                  </NavLink>
+                </li>
+
+                {/* Approve Decorator */}
+                <li>
+                  <NavLink
+                    to="/dashboard/assign-decorator"
+                    className={({ isActive }) =>
+                      `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                        isActive
+                          ? "bg-primary text-white"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`
+                    }
+                    data-tip="Assign Decorator"
+                  >
+                    <MdOutlineManageAccounts className="text-xl" />
+                    <span className="is-drawer-close:hidden">
+                      Assign Decorator
                     </span>
                   </NavLink>
                 </li>
