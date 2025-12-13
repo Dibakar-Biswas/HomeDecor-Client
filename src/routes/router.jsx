@@ -29,6 +29,7 @@ import AssignedProjects from "../pages/Dashboard/AssignedProjects/AssignedProjec
 import DecoratorRoute from "./DecoratorRoute";
 import Contact from "../pages/Contact/Contact";
 import ProjectStatus from "../pages/Dashboard/ProjectStatus/ProjectStatus";
+import EarningSummer from "../pages/Dashboard/EarningSummery/EarningSummer";
 
 
 
@@ -136,6 +137,10 @@ export const router = createBrowserRouter([
       {
         path: 'assigned-projects',
         element: <DecoratorRoute><AssignedProjects></AssignedProjects></DecoratorRoute>
+      },
+      {
+        path: 'earning-summery',
+        element: <DecoratorRoute><EarningSummer></EarningSummer></DecoratorRoute>
       },
       {
         path: 'project-status',

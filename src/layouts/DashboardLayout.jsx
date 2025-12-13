@@ -7,6 +7,7 @@ import { MdManageAccounts, MdOutlineManageAccounts } from "react-icons/md";
 import { SiGoogletasks, SiNginxproxymanager } from "react-icons/si";
 import { FcManager } from "react-icons/fc";
 import useRole from "../hooks/useRole";
+import { FaMoneyBill1Wave } from "react-icons/fa6";
 
 const DashboardLayout = () => {
   const { role } = useRole();
@@ -139,7 +140,8 @@ const DashboardLayout = () => {
                     </span>
                   </NavLink>
                 </li>
-                {/* Assigned Projects */}
+
+                {/* Project Status */}
                 <li>
                   <NavLink
                     to="/dashboard/project-status"
@@ -155,6 +157,26 @@ const DashboardLayout = () => {
                     <SiGoogletasks className="text-xl" />
                     <span className="is-drawer-close:hidden">
                       Project Status
+                    </span>
+                  </NavLink>
+                </li>
+
+                {/* Earning Summery */}
+                <li>
+                  <NavLink
+                    to="/dashboard/earning-summery"
+                    className={({ isActive }) =>
+                      `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                        isActive
+                          ? "bg-primary text-white"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`
+                    }
+                    data-tip="Earning Summery"
+                  >
+                    <FaMoneyBill1Wave className="text-xl" />
+                    <span className="is-drawer-close:hidden">
+                      Earning Summery
                     </span>
                   </NavLink>
                 </li>

@@ -19,7 +19,10 @@ const AssignedProjects = () => {
   });
 
   const handleSetupStatusUpdate = (decoration, status) => {
-    const statusInfo = { decorationStatus: status };
+    const statusInfo = { 
+        decorationStatus: status,
+        decoratorId: decoration.decoratorId
+     };
 
     let message = `Setup status is updated with ${status}`
     // .split('_').join(' ')
