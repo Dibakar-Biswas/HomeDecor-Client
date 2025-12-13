@@ -1,4 +1,5 @@
 import React from "react";
+import logo from '../../public/logo.jpeg'
 import { IoIosContacts } from "react-icons/io";
 import { BsGearWideConnected } from "react-icons/bs";
 import { Link, NavLink, Outlet } from "react-router";
@@ -8,6 +9,7 @@ import { SiGoogletasks, SiNginxproxymanager } from "react-icons/si";
 import { FcManager } from "react-icons/fc";
 import useRole from "../hooks/useRole";
 import { FaMoneyBill1Wave } from "react-icons/fa6";
+import { DiGoogleAnalytics } from "react-icons/di";
 
 const DashboardLayout = () => {
   const { role } = useRole();
@@ -50,7 +52,7 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-20 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             {/* List item */}
@@ -61,6 +63,19 @@ const DashboardLayout = () => {
                 data-tip="Homepage"
               >
                 {/* Home icon */}
+                <img className='h-8 w-8 rounded-xl' src={logo} alt="" />
+                <span className="is-drawer-close:hidden"><h3 className="text-3xl font-bold"><span className='text-pink-600 ml-1'>Style</span>Decor</h3></span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/dashboard"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                
+                data-tip="Homepage"
+              >
+               
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -77,6 +92,7 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Homepage</span>
               </Link>
             </li>
+           
 
             {/* Our dashboard link */}
 
@@ -186,6 +202,25 @@ const DashboardLayout = () => {
             {/* Admin only path */}
             {role === "admin" && (
               <>
+                {/* Analytics */}
+                <li>
+                  <NavLink
+                    to="/dashboard/analytics"
+                    className={({ isActive }) =>
+                      `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                        isActive
+                          ? "bg-primary text-white"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`
+                    }
+                    data-tip="Analytics"
+                  >
+                    <DiGoogleAnalytics className="text-xl" />
+                    <span className="is-drawer-close:hidden">
+                      Analytics
+                    </span>
+                  </NavLink>
+                </li>
                 {/* My Decorations */}
                 <li>
                   <NavLink

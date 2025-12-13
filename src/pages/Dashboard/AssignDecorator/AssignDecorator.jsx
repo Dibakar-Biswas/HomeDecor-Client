@@ -40,6 +40,7 @@ const AssignDecorator = () => {
       decoratorEmail: decorator.decoratorEmail,
       decoratorName: decorator.decoratorName,
       decorationId: selectedDecoration._id,
+      // trackingId: selectedDecoration.trackingId
     };
     axiosSecure
       .patch(`/decorations/${selectedDecoration._id}`, decoratorAssignInfo)
@@ -132,7 +133,7 @@ const AssignDecorator = () => {
           </div>
           <div className="modal-action">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
+              
               <button className="btn">Close</button>
             </form>
           </div>

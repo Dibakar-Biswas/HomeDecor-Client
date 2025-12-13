@@ -30,6 +30,8 @@ import DecoratorRoute from "./DecoratorRoute";
 import Contact from "../pages/Contact/Contact";
 import ProjectStatus from "../pages/Dashboard/ProjectStatus/ProjectStatus";
 import EarningSummer from "../pages/Dashboard/EarningSummery/EarningSummer";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
+import Analytics from "../pages/Dashboard/Analytics/Analytics";
 
 
 
@@ -106,6 +108,14 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ,
     children: [
+      {
+        index: true,
+        Component: DashboardHome
+      },
+      {
+        path: 'analytics',
+        element: <AdminRoute><Analytics></Analytics></AdminRoute>
+      },
       {
         path: 'my-decorations',
         element: <AdminRoute><MyDecorations></MyDecorations></AdminRoute>

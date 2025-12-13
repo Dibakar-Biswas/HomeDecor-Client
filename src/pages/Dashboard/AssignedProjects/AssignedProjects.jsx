@@ -21,7 +21,8 @@ const AssignedProjects = () => {
   const handleSetupStatusUpdate = (decoration, status) => {
     const statusInfo = { 
         decorationStatus: status,
-        decoratorId: decoration.decoratorId
+        decoratorId: decoration.decoratorId,
+        // trackingId: decoration.trackingId
      };
 
     let message = `Setup status is updated with ${status}`
