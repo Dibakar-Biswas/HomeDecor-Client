@@ -2,9 +2,9 @@ import React from "react";
 import { IoIosContacts } from "react-icons/io";
 import { BsGearWideConnected } from "react-icons/bs";
 import { Link, NavLink, Outlet } from "react-router";
-import { FaRegCreditCard, FaUser } from "react-icons/fa";
+import { FaRegCreditCard, FaTasks, FaUser } from "react-icons/fa";
 import { MdManageAccounts, MdOutlineManageAccounts } from "react-icons/md";
-import { SiNginxproxymanager } from "react-icons/si";
+import { SiGoogletasks, SiNginxproxymanager } from "react-icons/si";
 import { FcManager } from "react-icons/fc";
 import useRole from "../hooks/useRole";
 
@@ -117,6 +117,51 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
 
+            {/* Decorator only path */}
+            {role === "decorator" && (
+              <>
+                {/* Assigned Projects */}
+                <li>
+                  <NavLink
+                    to="/dashboard/assigned-projects"
+                    className={({ isActive }) =>
+                      `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                        isActive
+                          ? "bg-primary text-white"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`
+                    }
+                    data-tip="Assigned Projects"
+                  >
+                    <FaTasks className="text-xl" />
+                    <span className="is-drawer-close:hidden">
+                      Assign Projects
+                    </span>
+                  </NavLink>
+                </li>
+                {/* Assigned Projects */}
+                <li>
+                  <NavLink
+                    to="/dashboard/project-status"
+                    className={({ isActive }) =>
+                      `is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-2 py-2 rounded-md transition-colors ${
+                        isActive
+                          ? "bg-primary text-white"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`
+                    }
+                    data-tip="Project Status"
+                  >
+                    <SiGoogletasks className="text-xl" />
+                    <span className="is-drawer-close:hidden">
+                      Project Status
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {/* Admin only path */}
             {role === "admin" && (
               <>
                 {/* My Decorations */}

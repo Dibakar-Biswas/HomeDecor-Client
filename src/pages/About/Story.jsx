@@ -4,9 +4,7 @@ import React from 'react';
 const Story = () => {
     return (
         <div className='text-[20px] p-8'>
-            <p>We started with a simple promise — to make parcel delivery fast, reliable, and stress-free. Over the years, our commitment to real-time tracking, efficient logistics, and customer-first service has made us a trusted partner for thousands. Whether it's a personal gift or a time-sensitive business delivery, we ensure it reaches its destination — on time, every time.</p>
-            <p>We started with a simple promise — to make parcel delivery fast, reliable, and stress-free. Over the years, our commitment to real-time tracking, efficient logistics, and customer-first service has made us a trusted partner for thousands. Whether it's a personal gift or a time-sensitive business delivery, we ensure it reaches its destination — on time, every time.</p>
-            <p>We started with a simple promise — to make parcel delivery fast, reliable, and stress-free. Over the years, our commitment to real-time tracking, efficient logistics, and customer-first service has made us a trusted partner for thousands. Whether it's a personal gift or a time-sensitive business delivery, we ensure it reaches its destination — on time, every time.</p>
+            Our story began with a passion for transforming simple spaces into meaningful, memorable experiences. What started as a small creative initiative has grown into a full-fledged decoration brand trusted by families, events, and businesses. Over the years, we’ve learned to blend creativity with precision, turning every idea into a beautifully executed design. Our journey reflects our love for art, celebration, and the joy of making moments special.
         </div>
     );
 };

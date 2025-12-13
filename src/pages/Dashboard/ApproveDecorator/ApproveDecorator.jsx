@@ -17,7 +17,8 @@ const ApproveDecorator = () => {
   });
 
   const updateDecoratorStatus = (decorator, status) => {
-    const updatedInfo = { status: status, email: decorator.email };
+    const emailToSend = decorator.decoratorEmail || decorator.email; 
+    const updatedInfo = { status: status, email: emailToSend };
     axiosSecure
       .patch(`/decorators/${decorator._id}`, updatedInfo)
       .then((res) => {

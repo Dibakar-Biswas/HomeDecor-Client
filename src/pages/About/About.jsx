@@ -51,9 +51,12 @@ const About = () => {
       <div className="mb-16">
         <h2 className="font-extrabold text-6xl mb-5">About us</h2>
         <p className="text-[22px]">
-          Enjoy fast, reliable parcel delivery with real-time tracking and zero
-          hassle. From personal packages to business shipments — we deliver on
-          time, every time.
+          Our journey began with a simple passion for transforming ordinary
+          spaces into meaningful and memorable experiences. Over time, this
+          passion grew into a dedicated decoration brand committed to
+          creativity, quality, and customer satisfaction. Our mission is to
+          design thoughtful, personalized decorations that elevate every
+          occasion—celebrations, events, festivals, or corporate gatherings.
         </p>
       </div>
       <div>

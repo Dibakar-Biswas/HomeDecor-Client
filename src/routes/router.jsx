@@ -25,6 +25,10 @@ import ApproveDecorator from "../pages/Dashboard/ApproveDecorator/ApproveDecorat
 import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
 import AdminRoute from "./AdminRoute";
 import AssignDecorator from "../pages/Dashboard/AssignDecorator/AssignDecorator";
+import AssignedProjects from "../pages/Dashboard/AssignedProjects/AssignedProjects";
+import DecoratorRoute from "./DecoratorRoute";
+import Contact from "../pages/Contact/Contact";
+import ProjectStatus from "../pages/Dashboard/ProjectStatus/ProjectStatus";
 
 
 
@@ -41,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: '/service',
         element: <Service></Service>
+      },
+      {
+        path: 'contact',
+        element: <Contact></Contact>
       },
       {
         path: '/service/:id',
@@ -124,6 +132,14 @@ export const router = createBrowserRouter([
       {
         path: 'assign-decorator',
         element: <AdminRoute><AssignDecorator></AssignDecorator></AdminRoute>
+      },
+      {
+        path: 'assigned-projects',
+        element: <DecoratorRoute><AssignedProjects></AssignedProjects></DecoratorRoute>
+      },
+      {
+        path: 'project-status',
+        element: <DecoratorRoute><ProjectStatus></ProjectStatus></DecoratorRoute>
       },
       {
         path: 'payment-success',

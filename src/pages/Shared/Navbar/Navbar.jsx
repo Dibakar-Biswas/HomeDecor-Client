@@ -43,7 +43,7 @@ const Navbar = () => {
       <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/" ><IoIosContacts />Contact
+          to="/contact" ><IoIosContacts />Contact
         </NavLink>
         </li>
       
