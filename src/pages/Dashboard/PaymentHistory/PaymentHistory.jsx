@@ -18,7 +18,7 @@ const PaymentHistory = () => {
 
   return (
     <div>
-      <h2 className="text-4xl">Payment History {payments.length}</h2>
+      <h2 className="text-3xl text-center font-bold text-primary">Payment History {payments.length}</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
@@ -28,6 +28,7 @@ const PaymentHistory = () => {
               <th>Paid Time</th>
               <th>Amount</th>
               <th>TransactionId</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -37,6 +38,16 @@ const PaymentHistory = () => {
               <td>{payment.paidAt}</td>
               <td className="flex items-center gap-1"><FaBangladeshiTakaSign></FaBangladeshiTakaSign> {payment.amount}</td>
               <td>{payment.transactionId}</td>
+              <td>
+                  {/* Display Work Status */}
+                  <span className={`badge ${
+                    payment.workStatus === 'completed' ? 'badge-success text-white' : 
+                    payment.workStatus === 'assigned-decorator' ? 'badge-info text-white' : 
+                    'badge-ghost'
+                  }`}>
+                    {payment.workStatus || "Pending"}
+                  </span>
+                </td>
             </tr>)
             }
             

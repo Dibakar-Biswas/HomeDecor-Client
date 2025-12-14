@@ -54,9 +54,9 @@ const ProjectStatus = () => {
                   <span
                     className={`badge badge-lg border-0 text-white ${
                       decoration.decorationStatus === "setup_completed"
-                        ? "bg-green-500" 
+                        ? "bg-fuchsia-500" 
                         : decoration.decorationStatus === "materials_prepared"
-                        ? "bg-blue-500"  
+                        ? "bg-primary"  
                         : "bg-yellow-500" 
                     }`}
                   >

@@ -53,7 +53,7 @@ const UsersManagement = () => {
 
   return (
     <div>
-      <h2 className="text-3xl text-primary font-bold text-center">
+      <h2 className="text-4xl text-primary font-bold text-center">
         Manage Users: {users.length}
       </h2>
       <div className="overflow-x-auto">
@@ -66,7 +66,7 @@ const UsersManagement = () => {
               <th>Email</th>
               <th>Role</th>
               <th>Admin Actions</th>
-              <th>Other Actions</th>
+              {/* <th>Other Actions</th> */}
             </tr>
           </thead>
           <tbody>
@@ -103,12 +103,12 @@ const UsersManagement = () => {
                   ) : (
                     <button 
                     onClick={() => handleMakeAdmin(user)}
-                    className="btn bg-green-400">
+                    className="btn bg-fuchsia-400">
                       <FaUserShield></FaUserShield>
                     </button>
                   )}
                 </td>
-                <th>Actions</th>
+                {/* <th>Actions</th> */}
               </tr>
             ))}
           </tbody>

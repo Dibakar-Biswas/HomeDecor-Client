@@ -44,7 +44,7 @@ const Analytics = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold text-center mb-8">Analytics & Revenue</h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-primary">Analytics & Revenue</h2>
 
       <div className="stats shadow w-full mb-10 bg-base-100 border">
         <div className="stat">

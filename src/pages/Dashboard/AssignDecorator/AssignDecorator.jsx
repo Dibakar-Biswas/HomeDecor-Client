@@ -61,7 +61,7 @@ const AssignDecorator = () => {
 
   return (
     <div>
-      <div className="text-3xl">Assign Decorator: {decorations.length} </div>
+      <div className="text-3xl font-bold text-primary text-center">Assign Decorator: {decorations.length} </div>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}

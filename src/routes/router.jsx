@@ -32,6 +32,7 @@ import ProjectStatus from "../pages/Dashboard/ProjectStatus/ProjectStatus";
 import EarningSummer from "../pages/Dashboard/EarningSummery/EarningSummer";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import Analytics from "../pages/Dashboard/Analytics/Analytics";
+import Error from "../pages/Error/Error";
 
 
 
@@ -39,6 +40,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement: <Error></Error>,
     children: [
       {
         index: true,

@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "home-decoration-edf92",
+    "prod": "home-decoration-edf92"
+  },
+  "targets": {},
+  "etags": {}
+}

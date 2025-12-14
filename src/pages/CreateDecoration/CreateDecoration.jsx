@@ -4,127 +4,206 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 const CreateDecoration = () => {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
-  const navigate = useNavigate()
 
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
-
   const { user } = useAuth();
 
-  const handleDecoration = (data) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: `You are creating a decoration with a cost of ${data.cost} Taka`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, create it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
+  const image_hosting_key = import.meta.env.VITE_image_host_key;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-        // save the decoration info to the database
-        axiosSecure.post('/decorations', data)
-        .then(res => {
-            console.log('after creating decoration', res.data);
-            if(res.data.insertedId){
-                navigate('/dashboard/my-decorations')
+  const handleDecoration = async (data) => {
+    try {
+      const imageFile = { image: data.image[0] };
+      const res = await axios.post(image_hosting_api, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      });
+
+      if (res.data.success) {
+        const imageUrl = res.data.data.display_url;
+
+        const decorationData = {
+          serviceName: data.serviceName,
+          cost: parseFloat(data.cost),
+          unit: parseInt(data.unit),
+          category: data.serviceCategory,
+          adminEmail: data.adminEmail,
+          description: data.description,
+          image: imageUrl,
+          decorationStatus: "available",
+          createdAt: new Date(),
+        };
+
+        Swal.fire({
+          title: "Are you sure?",
+          text: `You are creating a service for ${decorationData.cost} BDT`,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, create it!",
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            const dbRes = await axiosSecure.post(
+              "/decorations",
+              decorationData
+            );
+
+            if (dbRes.data.insertedId) {
+              Swal.fire({
+                title: "Created!",
+                text: "Your decoration service has been added.",
+                icon: "success",
+              });
+              navigate("/dashboard/my-decorations");
             }
-        })
-        // console.log("Form Submitted:", data);
-
-        // Swal.fire({
-        //   title: "Created!",
-        //   text: "Your decoration has been created.",
-        //   icon: "success",
-        // });
+          }
+        });
       }
-    });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Error!",
+        text: "Something went wrong during image upload or saving.",
+        icon: "error",
+      });
+    }
   };
+
   return (
     <div>
-      <h2 className="text-3xl font-bold">Create Decoration</h2>
+      <h2 className="text-3xl font-bold text-center text-primary mb-4">Create Decoration Service</h2>
+
       <form
         onSubmit={handleSubmit(handleDecoration)}
-        className="mt-12 text-black"
+        className="mt-6 text-black bg-base-200 p-8 rounded-xl shadow-lg"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <fieldset className="fieldset">
-            <label className="label">Service Name</label>
+            <label className="label font-bold">Service Name</label>
             <input
               type="text"
-              {...register("serviceName")}
-              className="input w-full"
-              placeholder="Service Name"
+              {...register("serviceName", { required: true })}
+              className="input input-bordered w-full"
+              placeholder="e.g. Luxury Wedding Stage"
             />
+            {errors.serviceName && (
+              <span className="text-red-500 text-sm">Name is required</span>
+            )}
           </fieldset>
+
           <fieldset className="fieldset">
-            <label className="label">Cost</label>
+            <label className="label font-bold">Service Image</label>
             <input
-              type="number"
-              {...register("cost")}
-              className="input w-full"
-              placeholder="Cost"
+              type="file"
+              {...register("image", { required: true })}
+              className="file-input file-input-bordered file-input-primary w-full"
             />
+            {errors.image && (
+              <span className="text-red-500 text-sm">Image is required</span>
+            )}
           </fieldset>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-8">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+         
           <fieldset className="fieldset">
-            <label className="label">Unit</label>
+            <label className="label font-bold">Cost (BDT)</label>
             <input
               type="number"
-              {...register("unit")}
-              className="input w-full"
-              placeholder="Unit"
+              {...register("cost", {
+                required: "Cost is required",
+                min: {
+                  value: 70,
+                  message: "Minimum cost must be 70 BDT",
+                },
+              })}
+              className="input input-bordered w-full"
+              placeholder="Amount"
             />
+            {errors.cost && (
+              <span className="text-red-500 text-sm">
+                {errors.cost.message}
+              </span>
+            )}
           </fieldset>
+
           <fieldset className="fieldset">
-            <legend className="fieldset-legend">Service Category</legend>
+            <label className="label font-bold">Service Category</label>
             <select
-              defaultValue="Pick a browser"
-              className="select"
-              {...register("serviceCategory")}
+              defaultValue=""
+              className="select select-bordered w-full"
+              {...register("serviceCategory", { required: true })}
             >
-              <option disabled={true}>Pick a Service Category</option>
-              <option>Home</option>
-              <option>Wedding</option>
-              <option>Office</option>
-              <option>Seminar</option>
-              <option>Meeting</option>
+              <option value="" disabled>
+                Pick a Category
+              </option>
+              <option value="Home">Home Decoration</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Office">Corporate/Office</option>
+              <option value="Seminar">Seminar</option>
             </select>
+            {errors.serviceCategory && (
+              <span className="text-red-500 text-sm">Category is required</span>
+            )}
           </fieldset>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-8">
-          <div>
-            <label className="label">Admin Email</label>
-          <input
-            type="text"
-            {...register("adminEmail")}
-            defaultValue={user?.email}
-            className="input w-full"
-            placeholder="Admin Email"
-          />
-          </div>
-          <div>
-            <label className="label mt-4">Description</label>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <fieldset className="fieldset">
+            <label className="label font-bold">Unit-per sqrt-ft</label>
+            <input
+              type="number"
+              {...register("unit", { required: true })}
+              className="input input-bordered w-full"
+              placeholder="e.g. 1"
+            />
+            {errors.unit && (
+              <span className="text-red-500 text-sm">Unit is required</span>
+            )}
+          </fieldset>
+
+          <fieldset className="fieldset">
+            <label className="label font-bold">Admin Email</label>
+            <input
+              type="text"
+              {...register("adminEmail")}
+              defaultValue={user?.email}
+              readOnly
+              className="input input-bordered w-full bg-gray-200"
+            />
+          </fieldset>
+        </div>
+
+        <div className="mb-6">
+          <label className="label font-bold">Description</label>
           <textarea
-            placeholder="Description"
-            {...register("description")}
-            className="textarea textarea-primary w-full mb-2"
+            {...register("description", { required: true })}
+            placeholder="Detailed description of the service..."
+            className="textarea textarea-bordered h-24 w-full"
           ></textarea>
-          </div>
+          {errors.description && (
+            <span className="text-red-500 text-sm">
+              Description is required
+            </span>
+          )}
         </div>
 
         <input
           type="submit"
-          className="btn btn-primary text-black"
-          value="Create Decoration"
+          className="btn btn-primary w-full text-white font-bold text-lg"
+          value="Create Service"
         />
       </form>
     </div>

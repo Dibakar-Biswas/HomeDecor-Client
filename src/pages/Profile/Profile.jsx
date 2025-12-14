@@ -17,7 +17,7 @@ const Profile = () => {
             />
           </a>
 
-          <p className='p-2 px-4 text-xs text-white bg-lime-500 rounded-full'>
+          <p className='p-2 px-4 text-xs text-white bg-primary rounded-full'>
             {role}
           </p>
           <p className='mt-2 text-xl font-medium text-gray-800 '>
@@ -37,10 +37,10 @@ const Profile = () => {
               </p>
 
               <div>
-                <button className='bg-lime-500  px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-lime-800 block mb-1'>
+                <button className='bg-primary  px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-lime-800 block mb-1'>
                   Update Profile
                 </button>
-                <button className='bg-lime-500 px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-lime-800'>
+                <button className='bg-primary px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-lime-800'>
                   Change Password
                 </button>
               </div>

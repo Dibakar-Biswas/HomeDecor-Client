@@ -45,7 +45,7 @@ const AssignedProjects = () => {
 
   return (
     <div>
-      <h2 className="text-3xl">
+      <h2 className="text-3xl font-bold text-primary text-center">
         Assigned Pending Projects : {decorations.length}
       </h2>
       <div className="overflow-x-auto">
@@ -73,7 +73,7 @@ const AssignedProjects = () => {
                       >
                         Accept
                       </button>
-                      <button className="btn btn-warning ms-2">Reject</button>
+                      {/* <button className="btn btn-warning ms-2">Reject</button> */}
                     </>
                   ) : (
                     <span className="">Accepted</span>

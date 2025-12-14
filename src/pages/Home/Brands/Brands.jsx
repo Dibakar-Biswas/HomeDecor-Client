@@ -40,7 +40,7 @@ const Brands = () => {
     >
       {brandsLogos.map((logo, index) => (
         <SwiperSlide key={index}>
-          <img className="h-8 w-16" src={logo} alt="" />
+          <img className="h-8 w-16 -mt-2 md:mt-1" src={logo} alt="" />
         </SwiperSlide>
       ))}
     </Swiper>

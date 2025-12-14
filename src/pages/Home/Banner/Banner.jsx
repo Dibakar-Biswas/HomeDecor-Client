@@ -8,7 +8,7 @@ import banner3 from "../../../assets/banner_3.jpeg";
 
 const Banner = () => {
   return (
-    <div className="banner-container mb-20">
+    <div className="banner-container mb-2 md:mb-20 h-10/12 md:max-h-7/12">
       <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true}>
         <div>
           <img src={banner1} />

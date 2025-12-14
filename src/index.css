@@ -10,6 +10,13 @@
   --color-secondary: teal;
 }
 
+body{
+  background: linear-gradient(180deg, #ffffff 0%, #b67193 100%);
+  /* color: white; */
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
 .banner-container {
   height: 70vh;
   width: 100%;

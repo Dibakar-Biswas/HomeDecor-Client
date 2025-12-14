@@ -49,7 +49,7 @@ const MyDecorations = () => {
 
   return (
     <div>
-      <h2 className="text-2xl">All Decorations: {decorations.length}</h2>
+      <h2 className="text-3xl font-bold text-primary text-center">All Decorations: {decorations.length}</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
@@ -82,15 +82,15 @@ const MyDecorations = () => {
                 <td>{decoration.trackingId}</td>
                 <td>{decoration.decorationStatus}</td>
                 <td>
-                  <button className="btn btn-square hover:bg-primary">
+                  {/* <button className="btn btn-square hover:bg-primary">
                     <PiMagnifyingGlassDuotone></PiMagnifyingGlassDuotone>
                   </button>
                   <button className="btn btn-square hover:bg-primary mx-2">
                     <FaEdit></FaEdit>
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => handleDecorationDelete(decoration._id)}
-                    className="btn btn-square hover:bg-primary"
+                    className="btn btn-square bg-fuchsia-400 hover:bg-primary"
                   >
                     <FaTrash></FaTrash>
                   </button>

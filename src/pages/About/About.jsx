@@ -48,8 +48,8 @@ const About = () => {
   );
   return (
     <div className="mt-10">
-      <div className="mb-16">
-        <h2 className="font-extrabold text-6xl mb-5">About us</h2>
+      <div className="mb-16 p-4">
+        <h2 className="font-bold text-center text-primary text-4xl mb-5">About us</h2>
         <p className="text-[22px]">
           Our journey began with a simple passion for transforming ordinary
           spaces into meaningful and memorable experiences. Over time, this
@@ -60,7 +60,7 @@ const About = () => {
         </p>
       </div>
       <div>
-        <ul className="flex text-2xl gap-5">{links}</ul>
+        <ul className="flex text-2xl gap-5 p-4">{links}</ul>
         <Outlet></Outlet>
       </div>
     </div>

@@ -9,7 +9,7 @@ const Reviews = ({ reviewsPromise }) => {
   return (
     <div className="mt-20">
       <div className="text-center">
-        <h3 className="font-extrabold text-4xl mb-4">
+        <h3 className="font-bold text-center text-primary text-4xl mb-4">
           What our customers are sayings
         </h3>
         <p className="font-medium">
