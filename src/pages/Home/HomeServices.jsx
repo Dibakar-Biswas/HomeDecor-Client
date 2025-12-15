@@ -8,7 +8,7 @@ const HomeServices = () => {
   useEffect(() => {
     axiosSecure
       .get("/decorations")
-      .then((res) => setServices(res.data.slice(0, 3))) // Showing top 3
+      .then((res) => setServices(res.data.slice(0, 3)))
       .catch((err) => console.error(err));
   }, [axiosSecure]);
 
