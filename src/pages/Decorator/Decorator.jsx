@@ -35,7 +35,7 @@ const Decorator = () => {
       <h2 className="text-3xl text-primary font-bold text-center">Become a Decorator</h2>
       <form
         onSubmit={handleSubmit(handleDecoratorApplication)}
-        className="mt-12 text-black px-6"
+        className="mt-12 px-6"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-8">
           <fieldset className="fieldset">

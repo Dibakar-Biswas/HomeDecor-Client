@@ -1,53 +1,83 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../../components/Logo/Logo";
 import { FaAnchor, FaHome, FaPlus } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
-import { MdDashboardCustomize, MdDesignServices } from "react-icons/md";
+import { MdDarkMode, MdDashboardCustomize, MdDesignServices, MdLightMode } from "react-icons/md";
 import { FcAbout } from "react-icons/fc";
 import { IoIosContacts } from "react-icons/io";
 import useAuth from "../../../hooks/useAuth";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light"
+  );
 
-  const {user, logOut} = useAuth();
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   const handleLogOut = () => {
     logOut()
-    .then()
-    .catch(error => {
-      console.log(error);
-    })
-  }
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    const links = (
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  const links = (
     <>
-      <li><NavLink className={({ isActive }) =>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/" ><FaHome></FaHome>Home
+          to="/"
+        >
+          <FaHome></FaHome>Home
         </NavLink>
-        </li>
-      <li><NavLink className={({ isActive }) =>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/service" ><MdDesignServices />Service
+          to="/service"
+        >
+          <MdDesignServices />
+          Service
         </NavLink>
-        </li>
-      <li><NavLink className={({ isActive }) =>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/about" ><FcAbout />About
+          to="/about"
+        >
+          <FcAbout />
+          About
         </NavLink>
-        </li>
-      <li><NavLink className={({ isActive }) =>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
-          to="/contact" ><IoIosContacts />Contact
+          to="/contact"
+        >
+          <IoIosContacts />
+          Contact
         </NavLink>
-        </li>
-      
-        {/* {user && <li><NavLink className={({ isActive }) =>
+      </li>
+
+      {/* {user && <li><NavLink className={({ isActive }) =>
             isActive ? "text-pink-600 font-bold" : ""
           }
           to="/dashboard/my-decorations" ><IoIosContacts />My Decoration
@@ -59,13 +89,19 @@ const Navbar = () => {
           to="/decorator" ><IoIosContacts />Decorator
         </NavLink>
         </li> */}
-      {user && <li><NavLink className={({ isActive }) =>
-            isActive ? "text-pink-600 font-bold" : ""
-          }
-          to="/dashboard" ><MdDashboardCustomize />Dashboard
-        </NavLink>
-        </li>}
-      
+      {user && (
+        <li>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-pink-600 font-bold" : ""
+            }
+            to="/dashboard"
+          >
+            <MdDashboardCustomize />
+            Dashboard
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -96,16 +132,25 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost text-xl">
-            <Logo></Logo>
+        <Link to="/" className="btn btn-ghost text-md md:text-xl">
+          <Logo></Logo>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-2">
+        <button
+          onClick={toggleTheme}
+          className="btn btn-ghost btn-circle"
+          aria-label="Toggle theme"
+        >
+          {theme === "light" ? (
+            <MdDarkMode className="h-5 w-5" />
+          ) : (
+            <MdLightMode className="h-5 w-5" />
+          )}
+        </button>
         {/* {
           user ? <a onClick={handleLogOut} className="btn">Log Out</a>
           : <Link className="btn" to='/login'>Login</Link>
@@ -140,7 +185,6 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              
               <li>
                 <button
                   onClick={handleLogOut}

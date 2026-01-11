@@ -33,6 +33,7 @@ import EarningSummer from "../pages/Dashboard/EarningSummery/EarningSummer";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import Analytics from "../pages/Dashboard/Analytics/Analytics";
 import Error from "../pages/Error/Error";
+import QuoteGenerator from "../pages/Home/QuoteGenerator/QuoteGenerator";
 
 
 
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact></Contact>
+      },
+      {
+        path: 'quote',
+        element: <QuoteGenerator></QuoteGenerator>
       },
       {
         path: '/service/:id',

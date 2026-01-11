@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default;
+  themes: light, dark;
 };
 
 @plugin "daisyui/theme" {
@@ -10,11 +10,26 @@
   --color-secondary: teal;
 }
 
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #e60077;
+  --color-secondary: teal;
+  --color-base-100: #1f2937;
+  --color-base-200: #111827;
+  --color-base-300: #374151;
+  --color-base-content: #e5e7eb;
+}
+
 body{
   background: linear-gradient(180deg, #ffffff 0%, #b67193 100%);
   /* color: white; */
   min-height: 100vh;
   background-attachment: fixed;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] body {
+  background: linear-gradient(180deg, #1f2937 0%, #4a1f35 100%);
 }
 
 .banner-container {

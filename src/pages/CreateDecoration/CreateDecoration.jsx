@@ -82,43 +82,50 @@ const CreateDecoration = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center text-primary mb-4">Create Decoration Service</h2>
+      <h2 className="text-3xl font-bold text-center text-primary mb-4">
+        Create Decoration Service
+      </h2>
 
       <form
         onSubmit={handleSubmit(handleDecoration)}
-        className="mt-6 text-black bg-base-200 p-8 rounded-xl shadow-lg"
+        className="mt-6 bg-base-200 p-8 rounded-xl shadow-lg"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <fieldset className="fieldset">
-            <label className="label font-bold">Service Name</label>
+            <label className="label font-bold text-base-content">
+              Service Name
+            </label>
             <input
               type="text"
               {...register("serviceName", { required: true })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-base-100 text-base-content"
               placeholder="e.g. Luxury Wedding Stage"
             />
             {errors.serviceName && (
-              <span className="text-red-500 text-sm">Name is required</span>
+              <span className="text-error text-sm">Name is required</span>
             )}
           </fieldset>
 
           <fieldset className="fieldset">
-            <label className="label font-bold">Service Image</label>
+            <label className="label font-bold text-base-content">
+              Service Image
+            </label>
             <input
               type="file"
               {...register("image", { required: true })}
-              className="file-input file-input-bordered file-input-primary w-full"
+              className="file-input file-input-bordered file-input-primary w-full bg-base-100 text-base-content"
             />
             {errors.image && (
-              <span className="text-red-500 text-sm">Image is required</span>
+              <span className="text-error text-sm">Image is required</span>
             )}
           </fieldset>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-         
           <fieldset className="fieldset">
-            <label className="label font-bold">Cost (BDT)</label>
+            <label className="label font-bold text-base-content">
+              Cost (BDT)
+            </label>
             <input
               type="number"
               {...register("cost", {
@@ -128,21 +135,23 @@ const CreateDecoration = () => {
                   message: "Minimum cost must be 70 BDT",
                 },
               })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-base-100 text-base-content"
               placeholder="Amount"
             />
             {errors.cost && (
-              <span className="text-red-500 text-sm">
+              <span className="text-error text-sm">
                 {errors.cost.message}
               </span>
             )}
           </fieldset>
 
           <fieldset className="fieldset">
-            <label className="label font-bold">Service Category</label>
+            <label className="label font-bold text-base-content">
+              Service Category
+            </label>
             <select
               defaultValue=""
-              className="select select-bordered w-full"
+              className="select select-bordered w-full bg-base-100 text-base-content"
               {...register("serviceCategory", { required: true })}
             >
               <option value="" disabled>
@@ -155,46 +164,52 @@ const CreateDecoration = () => {
               <option value="Seminar">Seminar</option>
             </select>
             {errors.serviceCategory && (
-              <span className="text-red-500 text-sm">Category is required</span>
+              <span className="text-error text-sm">Category is required</span>
             )}
           </fieldset>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <fieldset className="fieldset">
-            <label className="label font-bold">Unit-per sqrt-ft</label>
+            <label className="label font-bold text-base-content">
+              Unit-per sqrt-ft
+            </label>
             <input
               type="number"
               {...register("unit", { required: true })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-base-100 text-base-content"
               placeholder="e.g. 1"
             />
             {errors.unit && (
-              <span className="text-red-500 text-sm">Unit is required</span>
+              <span className="text-error text-sm">Unit is required</span>
             )}
           </fieldset>
 
           <fieldset className="fieldset">
-            <label className="label font-bold">Admin Email</label>
+            <label className="label font-bold text-base-content">
+              Admin Email
+            </label>
             <input
               type="text"
               {...register("adminEmail")}
               defaultValue={user?.email}
               readOnly
-              className="input input-bordered w-full bg-gray-200"
+              className="input input-bordered w-full bg-base-300 text-base-content cursor-not-allowed"
             />
           </fieldset>
         </div>
 
         <div className="mb-6">
-          <label className="label font-bold">Description</label>
+          <label className="label font-bold text-base-content">
+            Description
+          </label>
           <textarea
             {...register("description", { required: true })}
             placeholder="Detailed description of the service..."
-            className="textarea textarea-bordered h-24 w-full"
+            className="textarea textarea-bordered h-24 w-full bg-base-100 text-base-content"
           ></textarea>
           {errors.description && (
-            <span className="text-red-500 text-sm">
+            <span className="text-error text-sm">
               Description is required
             </span>
           )}
