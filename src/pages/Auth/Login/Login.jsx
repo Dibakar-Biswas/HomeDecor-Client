@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, { useState } from "react";
 // import { useForm } from "react-hook-form";
 // import useAuth from "../../../hooks/useAuth";
@@ -403,6 +404,8 @@
 
 // export default Login;
 
+=======
+>>>>>>> 4a112b080f07eeb6af6542378f52ee8b48203b90
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
