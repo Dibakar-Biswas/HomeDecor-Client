@@ -14,7 +14,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: "onTouched", // Show errors after field is touched
+    mode: "onTouched", 
   });
   const { registerUser, updateUserProfile } = useAuth();
   const location = useLocation();
@@ -28,10 +28,8 @@ const Register = () => {
     const profileImg = data.photo[0];
 
     try {
-      // Register user with Firebase
       await registerUser(data.email, data.password);
 
-      // Upload image to imgbb
       const formData = new FormData();
       formData.append("image", profileImg);
 
@@ -42,7 +40,6 @@ const Register = () => {
       const imageRes = await axios.post(image_API_URL, formData);
       const photoURL = imageRes.data.data.url;
 
-      // Create user in database
       const userInfo = {
         email: data.email,
         displayName: data.name,
@@ -55,7 +52,6 @@ const Register = () => {
         console.log("user created in the database");
       }
 
-      // Update user profile in Firebase
       const userProfile = {
         displayName: data.name,
         photoURL: photoURL,
@@ -84,7 +80,7 @@ const Register = () => {
   return (
     <div className="card bg-base-200 w-full mx-auto max-w-sm shrink-0 shadow-2xl border border-base-300">
       <h3 className="text-3xl text-center pt-6 font-bold text-base-content">
-        Welcome to Zap Shift
+        Welcome to <span className='text-pink-600 ml-1'>Style</span>Decor
       </h3>
       <p className="text-center text-base-content/70">Please Register</p>
       <div className="card-body">
