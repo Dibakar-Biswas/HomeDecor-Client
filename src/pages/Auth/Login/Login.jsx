@@ -158,7 +158,6 @@
 
 // export default Login;
 
-
 // import React, { useState } from "react";
 // import { useForm } from "react-hook-form";
 // import useAuth from "../../../hooks/useAuth";
@@ -206,7 +205,7 @@
 //     const account = demoAccounts[accountType];
 //     setValue("email", account.email);
 //     setValue("password", account.password);
-    
+
 //     toast.info(`Demo ${account.role} credentials loaded!`, {
 //       position: "top-right",
 //       autoClose: 2000,
@@ -404,7 +403,6 @@
 
 // export default Login;
 
-
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
@@ -432,25 +430,25 @@ const Login = () => {
   // Demo credentials
   const demoAccounts = {
     user: {
-      email: "iron@man.com",
-      password: "Iron@123",
-      role: "Regular User",
+      email: import.meta.env.VITE_DEMO_USER_EMAIL,
+      password: import.meta.env.VITE_DEMO_USER_PASSWORD,
+      role: import.meta.env.VITE_DEMO_USER_ROLE,
     },
     admin: {
-      email: "admin@gmail.com",
-      password: "Admin@123",
-      role: "Administrator",
+      email: import.meta.env.VITE_DEMO_ADMIN_EMAIL,
+      password: import.meta.env.VITE_DEMO_ADMIN_PASSWORD,
+      role: import.meta.env.VITE_DEMO_ADMIN_ROLE,
     },
     decorator: {
-      email: "flash@speed.com",
-      password: "Flash@123",
-      role: "Decorator",
+      email: import.meta.env.VITE_DEMO_DECORATOR_EMAIL,
+      password: import.meta.env.VITE_DEMO_DECORATOR_PASSWORD,
+      role: import.meta.env.VITE_DEMO_DECORATOR_ROLE,
     },
   };
 
   // Check if email is a demo account
   const isDemoEmail = (email) => {
-    const demoEmails = ['iron@man.com', 'admin@gmail.com', 'flash@speed.com'];
+    const demoEmails = ["iron@man.com", "admin@gmail.com", "flash@speed.com"];
     return demoEmails.includes(email.toLowerCase());
   };
 
@@ -458,7 +456,7 @@ const Login = () => {
     const account = demoAccounts[accountType];
     setValue("email", account.email);
     setValue("password", account.password);
-    
+
     toast.info(`Demo ${account.role} credentials loaded!`, {
       position: "top-right",
       autoClose: 2000,
@@ -474,13 +472,16 @@ const Login = () => {
 
       // Set demo account flag in localStorage
       if (isDemoEmail(data.email)) {
-        localStorage.setItem('isDemoAccount', 'true');
-        toast.warning("You're logged in as a demo account. All modification features are disabled.", {
-          position: "top-right",
-          autoClose: 4000,
-        });
+        localStorage.setItem("isDemoAccount", "true");
+        toast.warning(
+          "You're logged in as a demo account. All modification features are disabled.",
+          {
+            position: "top-right",
+            autoClose: 4000,
+          }
+        );
       } else {
-        localStorage.removeItem('isDemoAccount');
+        localStorage.removeItem("isDemoAccount");
       }
 
       toast.success("Login successful! Welcome back!", {
@@ -585,7 +586,9 @@ const Login = () => {
                 placeholder="Email"
               />
               {errors.email && (
-                <p className="text-error text-sm mt-1">{errors.email.message}</p>
+                <p className="text-error text-sm mt-1">
+                  {errors.email.message}
+                </p>
               )}
 
               {/* Password field with toggle */}
